@@ -1,0 +1,7 @@
+rtcw_server:
+    image: rtcw_server
+    restart: always
+    ports:
+        - "27960:27960/udp"
+    volumes:
+        - ./main/:/root/.wolf/main/
