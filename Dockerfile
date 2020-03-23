@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:16.04
 MAINTAINER Pat Hartl
 
 # Add compatiblity for x86 binaries
@@ -6,7 +6,7 @@ RUN dpkg --add-architecture i386
 
 # Refresh package list and install necessary packages
 RUN apt-get update
-RUN apt-get install -y git gcc:i386 gcc-multilib:i386 g++:i386 g++-multilib:i386 mesa-common-dev:i386 libxxf86dga-dev:i386 libxxf86vm-dev nasm libx11-dev:i386 libxext-dev:i386 libXxf86vm-dev:i386 libdb-dev:i386
+RUN apt-get install -y git gcc:i386 gcc-multilib:i386 g++:i386 g++-multilib:i386 mesa-common-dev:i386 libxxf86dga-dev:i386 libxxf86vm-dev nasm libx11-dev:i386 libxext-dev:i386 libxxf86vm-dev:i386 libdb-dev:i386
 
 # Grab the RTCW source code
 RUN git clone https://github.com/id-Software/RTCW-MP.git /root/rtcw-src
@@ -27,7 +27,7 @@ RUN mv release-x86-Linux-/game/unix/qagame.mp.i386.so ~/.wolf
 
 # Clean
 RUN rm -R /root/rtcw-src
-RUN apt-get remove -y git gcc:i386 gcc-multilib:i386 g++:i386 g++-multilib:i386 mesa-common-dev:i386 libxxf86dga-dev:i386 libxxf86vm-dev nasm libx11-dev:i386 libxext-dev:i386 libXxf86vm-dev:i386 libdb-dev:i386
+RUN apt-get remove -y git gcc:i386 gcc-multilib:i386 g++:i386 g++-multilib:i386 mesa-common-dev:i386 libxxf86dga-dev:i386 libxxf86vm-dev nasm libx11-dev:i386 libxext-dev:i386 libxxf86vm-dev:i386 libdb-dev:i386
 RUN apt-get autoremove -y
 
 WORKDIR /root/.wolf
